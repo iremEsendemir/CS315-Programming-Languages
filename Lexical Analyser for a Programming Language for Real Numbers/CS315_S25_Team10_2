@@ -1,0 +1,44 @@
+int_main{
+	float alist[4] = {3.15, 7, 0.03, -1.7};
+	float blist[3] = {9, -1.2, +1.2};
+	float c;
+
+	for(float a in a_list)
+	{
+		for(float b in b_list)
+		{
+			c = foo(a, b);
+			write("a = ");
+			write(a);
+			write("b = ");
+			write(b);
+			write("c = ");
+			write(c);
+		}
+	}
+}
+
+funct foo(int p, int q)
+{
+        # Print Statements
+        write("foo");
+        write("p = ");
+        write(p);
+        write("q = ");
+        write(q);
+        
+        
+       	if(p > q)
+        {
+                return p;
+        }
+	else if(q > p)
+        {
+                return q;
+        }
+	else
+	{
+                write("Parameters are equal");
+                return 0;
+        }
+}

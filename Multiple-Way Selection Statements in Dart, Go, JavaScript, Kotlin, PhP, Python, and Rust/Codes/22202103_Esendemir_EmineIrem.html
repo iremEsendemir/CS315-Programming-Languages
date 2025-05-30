@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Javascript - CS315 - HW2</title>
+</head>
+<body>
+ Emine Irem Esendemir - 22202103
+<br />
+ Open the console (F12) to see the output.
+</body>
+<script>
+// Helper function for demonstration
+function test() {
+    return 2;
+}
+
+console.log("1. What is the form and type of the control expression?");
+console.log("\n1.1 Forms of control expression:");
+
+// variable
+let x = 2;
+switch (x) {
+    case 1:
+        console.log("x is 1");
+        break;
+    case 2:
+        console.log("x is 2");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// arithmetic expression
+let y = 3;
+switch (x + y) {
+    case 4:
+        console.log("x + y is 4");
+        break;
+    case 5:
+        console.log("x + y is 5");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// literal
+switch ("hello") {
+    case "hi":
+        console.log("The string is 'hi'");
+        break;
+    case "hello":
+        console.log("The string is 'hello'");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// function call
+switch (test()) {
+    case 1:
+        console.log("func returned 1");
+        break;
+    case 2:
+        console.log("func returned 2");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+console.log("\n1.2 Types of control expression:");
+
+// number (int)
+let intValue = 3;
+console.log("Type of intValue:", typeof intValue);
+switch (intValue) {
+    case 1:
+        console.log("intValue is 1");
+        break;
+    case 3:
+        console.log("intValue is 3");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// string
+let strValue = "kemal";
+console.log("Type of strValue:", typeof strValue);
+switch (strValue) {
+    case "mustafa":
+        console.log("strValue is mustafa");
+        break;
+    case "kemal":
+        console.log("strValue is kemal");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// boolean
+let boolValue = true;
+console.log("Type of boolValue:", typeof boolValue);
+switch (boolValue) {
+    case true:
+        console.log("boolValue is true");
+        break;
+    case false:
+        console.log("boolValue is false");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// floating point (all numbers in JS are the same type)
+let floatValue = 1.5;
+console.log("Type of floatValue:", typeof floatValue);
+switch (floatValue) {
+    case 1.0:
+        console.log("floatValue is 1.0");
+        break;
+    case 1.5:
+        console.log("floatValue is 1.5");
+        break;
+    default:
+        console.log("floatValue is neither 1.0 nor 1.5");
+}
+
+// object (will not work properly with direct comparison)
+let objValue = { name: "John" };
+console.log("Type of objValue:", typeof objValue);
+switch (objValue) {
+    case { name: "John" }:  // This won't match
+        console.log("objValue has name John");
+        break;
+    default:
+        console.log("Object comparison doesn't work in switch - each object is unique");
+}
+
+// Symbol type
+let symbolValue = Symbol("test");
+console.log("Type of symbolValue:", typeof symbolValue);
+switch (symbolValue) {
+    case Symbol("test"):  // Symbols are always unique, so this won't match
+        console.log("symbolValue matches");
+        break;
+    default:
+        console.log("Symbol comparison matches only identical Symbols");
+}
+
+console.log("\n\n2. How are the selectable segments specified?");
+let value = 1;
+switch (value) {
+    case 1:
+        console.log("case 1");
+        // Local variable declaration
+        let localVar = "inside case 1";
+        console.log("Local variable:", localVar);
+        
+        // Multiple statements
+        value += 10;
+        console.log("Value after modification:", value);
+        break;
+        
+    case 2:
+        console.log("case 2");
+        break;
+        
+    default:
+        console.log("default case executed");
+}
+
+console.log("\n\n3. Is execution flow through the structure restricted to include just a single selectable segment?");
+
+console.log("3.1 Using break:");
+let testValue = 1;
+switch (testValue) {
+    case 1:
+        console.log("testValue is 1");
+        testValue = 2;
+        break; // Prevents fallthrough to the next case
+    case 2:  // This won't execute even though testValue becomes 2
+        console.log("testValue is 2");
+        break;
+    case 3:
+        console.log("testValue is 3");
+        break;
+    default:
+        console.log("default case executed");
+}
+console.log("After switch, testValue =", testValue);
+
+console.log("\n3.2 Without using break (allowing fallthrough):");
+testValue = 1;
+switch (testValue) {
+    case 1:
+        console.log("testValue is 1");
+        testValue = 2;
+        // No break here, so execution continues to the next case
+    case 2:  
+        console.log("continues to case 2");
+        // No break here either
+    case 3:
+        console.log("continues to case 3");
+        break;
+    case 4:
+        console.log("not reached");
+        break;
+    default:
+        console.log("default case executed");
+}
+console.log("After fallthrough switch, testValue =", testValue);
+
+console.log("\n\n4. How are case values specified?");
+
+// literal
+let name = "kemal";
+switch (name) {
+    case "mustafa":
+        console.log("name is mustafa");
+        break;
+    case "kemal":
+        console.log("name is kemal");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// using expressions in case values
+const a = "ke";
+const b = "mal";
+switch (name) {
+    case "mustafa":
+        console.log("name is mustafa");
+        break;
+    case a + b:  // Expressions are evaluated before comparison
+        console.log("name matches a + b (kemal)");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// Multiple cases sharing the same code block
+let number = 1;
+switch (number) {
+    case 1:
+    case 2:
+        console.log("number is either 1 or 2");
+        break;
+    case 3:
+        console.log("Number is 3");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// Strict equality (===) is used
+let stringNumber = "1"; // String "1"
+switch (stringNumber) {
+    case 1:  // Number 1
+        console.log("This won't match because === is used");
+        break;
+    case "1":  // String "1"
+        console.log("stringNumber is '1' (string)");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+// Attempting to use complex conditions (not possible directly)
+console.log("\nComplex conditions in switch:");
+let score = 85;
+console.log("score =", score);
+console.log("(JavaScript cannot check ranges directly in case values)");
+
+// Simulate with multiple cases or use if-else instead
+switch (true) {
+    case score >= 90:
+        console.log("Grade: A");
+        break;
+    case score >= 80:
+        console.log("Grade: B");
+        break;
+    case score >= 70:
+        console.log("Grade: C");
+        break;
+    default:
+        console.log("Grade: F");
+}
+
+console.log("\n\n5. What is done about unrepresented expression values?");
+
+console.log("5.1 Using default case:");
+let unrepresented = 4;
+switch (unrepresented) {
+    case 1:
+        console.log("number is 1");
+        break;
+    case 2:
+        console.log("number is 2");
+        break;
+    case 3:
+        console.log("number is 3");
+        break;
+    default:
+        console.log("default case executed");
+}
+
+console.log("\n5.2 No default case provided:");
+switch (unrepresented) {
+    case 1:
+        console.log("number is 1");
+        break;
+    case 2:
+        console.log("number is 2");
+        break;
+    case 3:
+        console.log("number is 3");
+        break;
+}
+console.log("Switch completed with no matching case and no default - execution continues");
+</script>
+</html>

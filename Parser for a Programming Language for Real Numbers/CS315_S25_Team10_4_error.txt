@@ -1,0 +1,51 @@
+int_main{
+    
+    int x, y = 1, z = -2, w;
+    x = y + z;
+    w = x - y;
+    int a, b = 2, c = 3;
+    a = b * c;
+    int e = 4, f = 5;
+    float d = f / e;
+
+    b = add(a, d);
+
+    const int CONST_VAL = 100;
+
+    int arr3[3] = {1, 2, 3};
+
+    float arr4[] = {1.1, 2.2, 3.3};
+
+    C = foo();
+
+    x = 1;
+    y = 2;
+
+    if (x > y) {
+        write("x is greater than y");
+        ## 
+        comment 
+        comment 
+        ##
+    } 
+    else_if (x == y) {
+        write("x is equal to y");
+    } 
+    else {
+        write("x is less than y");
+    }
+
+    ## as we did not finish the multiline comment, it gives syntax error. it looks for '##' until the end and can not find it and also cannot finish the main function as it cannot see the '}'.
+    comment
+    comment
+    
+}
+
+funct add(int a, float b) {
+    return a + b;
+}
+
+funct foo(){
+    # comment
+    write("Hello World\n");
+}

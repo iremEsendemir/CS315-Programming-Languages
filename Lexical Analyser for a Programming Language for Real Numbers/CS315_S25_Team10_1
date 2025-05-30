@@ -1,0 +1,17 @@
+int_main {
+    float x, y, z;
+        # comment line
+    do {
+        write("Enter values for x, y, and z (non-zero): ");
+        x = read();
+        y = read();
+        z = read();
+
+        if (x == 0 || y == 0 || z == 0) {
+            write("Error: Please enter non-zero values.\n");
+        }
+
+    } while (x == 0 || y == 0 || z == 0)
+
+    write("The result of x * y * z is: ", x * y * z);
+}

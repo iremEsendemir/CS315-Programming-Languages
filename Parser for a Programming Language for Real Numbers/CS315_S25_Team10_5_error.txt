@@ -1,0 +1,44 @@
+int_main{
+    int x, y = 1, z = -2, w;
+    x = y + z;
+    w = x - y;
+    int a, b = 2, c = 3;
+    a = b * c;
+    double e = 4, f = 5; #invalid type, double does not exist in our language
+    float d = f / e;
+
+    ##
+    comment
+    comment
+    ##
+    while (x < 5) {
+        write(x);
+        write(" ");
+        x++;
+    }
+
+    int j = 3;
+    do {
+        write(j);
+        # comment
+        j--;
+    } while (j > 0)
+
+    x = -1;
+    y = 100;
+    z = 100;
+    if (x >= y) {
+        write("x is greater than or equal to y");
+    } 
+    else_if (x <= y) {
+        write("x is less than or equal to y");
+    } 
+    else_if (z != y) {
+        write("z is not equal to y");
+    }
+
+    float num = y ^ x;
+    int num2 = y % z;
+
+    int arr5[5][2] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}};
+}
